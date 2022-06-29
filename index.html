@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Covid Record</title>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="./assets/css/style.min.css" />
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2"
+      crossorigin="anonymous"
+    ></script>
+    <script src="./assets/js/api.js" defer></script>
+  </head>
+  <body>
+    <div class="wrapper">
+      <nav class="navbar">
+        <div class="container-fluid">
+          <a class="navbar-brand">Covid19 Records</a>
+          <button
+            type="button"
+            class="btn btn-outline-primary"
+            data-bs-toggle="modal"
+            data-bs-target="#modal"
+            onclick="resetModal()"
+          >
+            + Add New
+          </button>
+        </div>
+      </nav>
+      <div class="tableContainer">
+        <table class="table table-sm text-nowrap">
+          <thead class="thead">
+            <tr>
+              <th scope="col">Name</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Mobile Number</th>
+              <th scope="col">Body Temp</th>
+              <th scope="col">Nationality</th>
+              <th scope="col">Convid19 Diagnosed</th>
+              <th scope="col">Covid19 Encounter</th>
+              <th scope="col">Vaccinated</th>
+              <th scope="col">Actions</th>
+            </tr>
+          </thead>
+          <tbody class="tbody"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- Modal -->
+    <div
+      class="modal fade"
+      id="modal"
+      data-bs-backdrop="static"
+      data-bs-keyboard="false"
+      tabindex="-1"
+      aria-labelledby="staticBackdropLabel"
+      aria-hidden="true"
+    >
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Add New Record</h5>
+            <button
+              id="closeModalBtn"
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form action="">
+              <input type="text" id="id" disabled hidden />
+              <div class="mb-3">
+                <label for="name" class="form-label">Name</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  id="name"
+                  aria-describedby="name"
+                />
+              </div>
+              <div class="d-flex mb-3 gap-3">
+                <label for="gender" class="form-label">Gender :</label>
+                <div class="d-flex gap-3">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="gender"
+                      checked
+                      value="Male"
+                    />
+                    <label class="form-check-label" for="male"> Male </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="gender"
+                      value="Female"
+                    />
+                    <label class="form-check-label" for="female">
+                      Female
+                    </label>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex mb-3 gap-3">
+                <div class="flex-fill">
+                  <label for="name" class="form-label">Age</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    aria-describedby="age"
+                    id="age"
+                  />
+                </div>
+                <div class="flex-fill">
+                  <label for="name" class="form-label">Mobile Number</label>
+                  <input
+                    type="text"
+                    class="form-control"
+                    aria-describedby="mobileNumber"
+                    id="mobileNumber"
+                  />
+                </div>
+              </div>
+              <div class="d-flex mb-3 gap-3">
+                <div class="flex-fill">
+                  <label for="name" class="form-label">Body Temp</label>
+                  <input
+                    type="number"
+                    class="form-control"
+                    aria-describedby="bodyTemp"
+                    id="bodyTemp"
+                  />
+                </div>
+                <div class="flex-fill">
+                  <label for="nationality" class="form-label"
+                    >Nationality</label
+                  >
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="nationality"
+                    aria-describedby="nationality"
+                  />
+                </div>
+              </div>
+              <div class="d-flex mb-3 gap-3">
+                <label for="diagnosed" class="form-label"
+                  >Covid-19 Diagnosed :</label
+                >
+                <div class="d-flex gap-3">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="diagnosed"
+                      checked
+                    />
+                    <label class="form-check-label" for="yes"> Yes </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="diagnosed"
+                    />
+                    <label class="form-check-label" for="no"> No </label>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex mb-3 gap-3">
+                <label for="encounter" class="form-label"
+                  >Covid-19 Encounter :</label
+                >
+                <div class="d-flex gap-3">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exposed"
+                      checked
+                    />
+                    <label class="form-check-label" for="yes"> Yes </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="exposed"
+                    />
+                    <label class="form-check-label" for="no"> No </label>
+                  </div>
+                </div>
+              </div>
+              <div class="d-flex gap-3">
+                <label for="vaccinated" class="form-label">Vaccinated :</label>
+                <div class="d-flex gap-3">
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vaccinated"
+                      checked
+                    />
+                    <label class="form-check-label" for="yes"> Yes </label>
+                  </div>
+                  <div class="form-check">
+                    <input
+                      class="form-check-input"
+                      type="radio"
+                      name="vaccinated"
+                    />
+                    <label class="form-check-label" for="no"> No </label>
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              id="saveBtn"
+              onclick="addPerson()"
+              type="button"
+              class="btn btn-primary"
+            >
+              Save
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
