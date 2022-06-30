@@ -1,10 +1,10 @@
 <?php
 class DBHandler
 {
-    private $servername = "";
-    private $username = "";
-    private $password = "";
-    private $db = "";
+    private $servername = "localhost";
+    private $username = "admin";
+    private $password = "MarronM5181996";
+    private $db = "covid_db";
 
 
     public function dbConnect()

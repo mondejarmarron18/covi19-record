@@ -1,0 +1,73 @@
+@import "./global.scss";
+
+.navbar {
+  .navbar-brand {
+    color: white;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+}
+
+.tableContainer {
+  width: 100%;
+  overflow-x: auto;
+  padding: 0 0.5rem 0 0.5rem;
+  margin-top: 2rem;
+  font-size: 0.9rem;
+
+  .table {
+    color: white;
+  }
+
+  &::-webkit-scrollbar {
+    background: transparent;
+    max-width: 5px;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: rgb(95, 95, 95);
+    border-radius: 10px;
+    border: 3px solid $colorSecondary;
+  }
+}
+
+.deleteBtn {
+  border: none;
+  background: rgba(255, 0, 0, 0.473);
+  color: rgb(255, 53, 53);
+  padding: 0.1rem 1rem;
+  border-radius: 1rem;
+  margin: 0.2rem;
+
+  &:hover {
+    background: rgb(255, 37, 37);
+    color: white;
+  }
+}
+
+.updateBtn {
+  border: none;
+  background: rgba(8, 173, 8, 0.445);
+  color: rgb(20, 211, 20);
+  padding: 0.1rem 1rem;
+  border-radius: 1rem;
+  margin: 0.2rem;
+  margin-right: 1rem;
+
+  &:hover {
+    background: green;
+    color: white;
+  }
+}
+
+.modal-content {
+  background: $colorSecondary;
+  color: white;
+
+  input,
+  input:focus {
+    background: transparent;
+    color: white;
+    border-color: white;
+  }
+}
